@@ -11,7 +11,6 @@ class Game{
         $( document ).ready(function() {
             setInterval(function(){
                 game.getPlayer().update();
-                
             }, 1000.0/60.0);
         });
     }

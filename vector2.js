@@ -4,17 +4,18 @@ class Vector2{
         this.y = y;
     }
 
-    normalize(){
-        this.x = this.x/this.getLength();
-        this.y = this.y/this.getLength()
-    }
-
     clampMagnitude(radius){
         if (this.getLength() > radius){
             this.normalize();
             this.x = radius * this.x;
             this.y = radius * this.y;
         }
+    }
+
+    normalize(){
+        let length = this.getLength();
+        this.x = this.x/length;
+        this.y = this.y/length;
     }
 
     getX(){
@@ -26,7 +27,7 @@ class Vector2{
     }
 
     getLength(){
-        return Math.sqrt((this.x * this.x) + (this.y + this.y))
+        return Math.sqrt((this.x * this.x) + (this.y * this.y));
     }
 
     setX(x){
