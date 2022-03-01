@@ -2,9 +2,9 @@ class Game{
     constructor(){
         this.createfield();
         this.createListener();
-        this.player = new PlayerController(new Vector2 (200,200), new Vector2(20,20), 0.01, 1, 0.01, "Sprites/Spieler.png");
+        this.player = new PlayerController(new Vector2 (200,200), new Vector2(20,20), 0.02, 5, 0.2, "Sprites/Spieler.png");
         this.enemyList = [];
-        this.enemyList.push(new EnemyController(new Vector2 (10,10), new Vector2(20,20), 0.01, 5, 5, "Sprites/Gegner.png"));
+        this.enemyList.push(new EnemyController(new Vector2 (10,10), new Vector2(20,20), 0.02, 50, 0.2, "Sprites/Gegner.png"));
 
         this.startGame();
     }
