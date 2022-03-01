@@ -1,15 +1,15 @@
 class Indicator {
-    constructor(size, position, sprite) {
+    constructor(size, sprite) {
         this.size = size;
-        this.position = position;
         this.sprite = sprite;
+        this.position = new Vector2(0,0);
         this.create();
         this.setVisiblity(false);
     }
 
     create() {
         this.$element = $('<div class="object"></div>');
-        this.$element.css({ top: this.position.getY(), left: this.position.getX(), heigth: this.size.getY(), width: this.size.getX() });
+        this.$element.css({heigth: this.size.getY(), width: this.size.getX() });
         this.$sprite = $('<img class="sprite" src="' + this.sprite + '">');
         this.$sprite.css({ heigth: this.size.getY(), width: this.size.getX() });
         $(this.$element).append(this.$sprite);

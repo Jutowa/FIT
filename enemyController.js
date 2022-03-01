@@ -2,7 +2,7 @@ class EnemyController extends Controller{
     constructor(position, size, maxForce, maxSpeed, maxVel, sprite){
         super(position, size, maxForce, maxSpeed, maxVel, sprite);
         this.isVisible = true;
-        this.indicator = new Indicator(this.size, this.position, "Sprites/Pfeil.png");
+        this.indicator = new Indicator(this.size, "Sprites/Pfeil.png");
     }
 
     seek(){
