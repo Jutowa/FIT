@@ -1,5 +1,7 @@
 class Game{
     constructor(){
+        this.fieldSize = new Vector2(800,600);
+
         this.createfield();
         this.createListener();
         this.player = new PlayerController(new Vector2 (200,200), new Vector2(20,20), 0.02, 5, 0.2, "Sprites/Spieler.png");
@@ -23,6 +25,7 @@ class Game{
     createfield(){
         this.$gameElememnt = $('<div id="game"></div>');
         this.$fieldElement = $('<div id="field"></div>');
+        this.$fieldElement.css({width: this.fieldSize.getX(), height: this.fieldSize.getY()})
         this.$gameElememnt.append(this.$fieldElement);
         $("main").append(this.$gameElememnt);
     }
@@ -52,5 +55,9 @@ class Game{
 
     getEnemyList(){
         return this.enemyList;
+    }
+
+    getFieldSize(){
+        return this.fieldSize;
     }
 }

@@ -10,10 +10,11 @@ class Controller{
         this.maxVel = maxVel;
 
         this.sprite = sprite;
-        this.createPlayer();
+
+        this.create();
     }
 
-    createPlayer(){
+    create(){
         this.$element = $('<div class="object"></div>');
         this.$element.css({top: this.position.getY(), left: this.position.getX(), heigth: this.size.getY(), width : this.size.getX()});
         this.$sprite = $('<img class="sprite" src="' + this.sprite +  '">');
@@ -23,13 +24,18 @@ class Controller{
     }
 
     update(){
+        this.edgeCheck();
         this.seek();
         this.move();
         this.rotate();
     }
 
     seek(){
+        //for Childclass
+    }
 
+    edgeCheck(){
+        //for Childclass
     }
 
     move(){
