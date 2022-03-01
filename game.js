@@ -2,8 +2,8 @@ class Game{
     constructor(){
         this.createfield();
         this.createListener();
-        this.player = new PlayerController(200, 200, 20, 20, 0.01, 5, 0.01, "Sprites/Spieler.png");
-        this.enemy = new EnemyController(20, 20, 20, 20, 0.01, 5, 0.01, "Sprites/Gegner.png");
+        this.player = new PlayerController(new Vector2 (200,200), new Vector2(20,20), 0.01, 5, 0.01, "Sprites/Spieler.png");
+        this.enemy = new EnemyController(new Vector2 (10,10), new Vector2(20,20), 0.01, 5, 0.01, "Sprites/Gegner.png");
         this.startGame();
     }
 

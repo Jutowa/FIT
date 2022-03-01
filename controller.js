@@ -1,9 +1,7 @@
 class Controller{
-    constructor(posX, posY, heigth, width, maxForce, maxSpeed, maxVel, sprite) {
-        this.posX = posX;
-        this.posY = posY;
-        this.heigth = heigth;
-        this.width = width;
+    constructor(position, size, maxForce, maxSpeed, maxVel, sprite) {
+        this.position = position;
+        this.size = size;
         this.currentRotation = 0;
 
         this.vel = new Vector2(0,0);
@@ -17,9 +15,9 @@ class Controller{
 
     createPlayer(){
         this.$element = $('<div class="object"></div>');
-        this.$element.css({top: this.posY, left: this.posX, heigth: this.heigth, width : this.width});
+        this.$element.css({top: this.position.getY(), left: this.position.getX(), heigth: this.size.getY(), width : this.size.getX()});
         this.$sprite = $('<img class="sprite" src="' + this.sprite +  '">');
-        this.$sprite.css({heigth: this.heigth , width : this.width});
+        this.$sprite.css({heigth: this.size.getY(), width : this.size.getX()});
         $(this.$element).append(this.$sprite);
         $("#field").append(this.$element);
     }
@@ -35,9 +33,9 @@ class Controller{
     }
 
     move(){
-        this.posX = this.posX + this.vel.getX();
-        this.posY = this.posY + this.vel.getY();
-        this.$element.css({top: this.posY, left: this.posX});
+        this.position.setX(this.position.getX() + this.vel.getX());
+        this.position.setY(this.position.getY() + this.vel.getY());
+        this.$element.css({top: this.position.getY(), left:  this.position.getX()});
     }
 
     rotate(){
@@ -49,6 +47,6 @@ class Controller{
     }
 
     getPos(){
-        return new Vector2(this.posX, this.posY);
+        return this.position;
     }
 }
