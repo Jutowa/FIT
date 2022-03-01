@@ -8,10 +8,7 @@ function seekingBehaviour(target, currentPos, vel, maxSpeed, maxForce, maxVel){
     steering.clampMagnitude(maxForce);
 
     let newVel = new Vector2(vel.getX() + steering.getX(), vel.getY() + steering.getY());
-    console.log(newVel.getY());
     newVel.clampMagnitude(maxSpeed);
 
-    
-    
     return newVel;
 }

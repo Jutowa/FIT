@@ -3,7 +3,6 @@ class Game{
         this.createfield();
         this.createListener();
         this.player = new PlayerController();
-        
         this.startGame();
     }
 
@@ -24,12 +23,12 @@ class Game{
 
     createListener(){
         var mouseover = false;
-        
+
         $(document).mousemove(function(e){
             if (mouseover){
-                mousePos.setX(e.clientX);
-                mousePos.setY(e.clientY);
-            } 
+                mousePos.setX(e.clientX - 8);
+                mousePos.setY(e.clientY - 8);
+            }
         });
 
         $(this.$fieldElement).mouseover(function(e){

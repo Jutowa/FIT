@@ -5,8 +5,11 @@
 }
 
 .player{
+    transform-origin: center center;
     position: relative;
-    height : 8px;
-    width: 8px;
-    background-color: white;
+}
+
+.sprite{
+    transform-origin: center;
+    position: relative;
 }
