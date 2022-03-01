@@ -2,7 +2,8 @@ class Game{
     constructor(){
         this.createfield();
         this.createListener();
-        this.player = new PlayerController();
+        this.player = new PlayerController(200, 200, 20, 20, 0.01, 5, 0.01, "Sprites/Spieler.png");
+        this.enemy = new EnemyController(20, 20, 20, 20, 0.01, 5, 0.01, "Sprites/Gegner.png");
         this.startGame();
     }
 
@@ -10,6 +11,7 @@ class Game{
         $( document ).ready(function() {
             setInterval(function(){
                 game.getPlayer().update();
+                game.enemy.update();
             }, 1000.0/60.0);
         });
     }
@@ -42,5 +44,9 @@ class Game{
 
     getPlayer(){
         return this.player;
+    }
+
+    getEnemy(){
+        return this.enemy;
     }
 }
