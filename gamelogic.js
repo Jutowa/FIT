@@ -231,7 +231,7 @@ var setup_step2 = function () {
 
     // setup webgazer
 
-    //webgazer.setRegression('weightedRidge');	
+    //webgazer.setRegression('weightedRidge');
     webgazer.setRegression('ridge'). // currently must set regression and tracker
         setTracker('TFFacemesh').
         showPredictionPoints(false). // shows a square every 100 milliseconds where current prediction is 

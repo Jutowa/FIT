@@ -1,20 +1,35 @@
 class Game{
-    constructor(width, heigth){
-        this.fieldSize = new Vector2(width,heigth);
+    constructor(size){
+        this.fieldSize = new Vector2(800,600);
 
         this.createfield();
         this.createListener();
         this.player = new PlayerController(new Vector2 (200,200), new Vector2(20,20), 0.02, 5, 0.2, "Sprites/Spieler.png");
         this.enemyList = [];
         this.enemyList.push(new EnemyController(new Vector2 (10,10), new Vector2(20,20), 0.02, 50, 0.2, "Sprites/Gegner.png"));
+
+        this.startGame();
     }
 
+    startGame(){
+        $( document ).ready(function() {
+            setInterval(function(){
+                game.getPlayer().update();
+                game.getEnemyList().forEach(element => {
+                    element.update();
+                });
+            }, 1000.0/60.0);
+        });
+    }
+
+    /*
     update(){
         game.getPlayer().update();
-        game.getEnemyList().forEach(element => {
+                game.getEnemyList().forEach(element => {
                     element.update();
                 });
     }
+    */
 
     createfield(){
         this.$gameElememnt = $('<div id="game"></div>');
@@ -52,6 +67,6 @@ class Game{
     }
 
     getFieldSize(){
-        return this.fieldSize;
+        return new Vector2(this.fieldSize.getX() - 15, this.fieldSize.getY() -17);
     }
 }

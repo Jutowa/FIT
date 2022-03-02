@@ -20,27 +20,29 @@ class Indicator {
         this.position.setX(enemyPosition.getX());
         this.position.setY(enemyPosition.getY());
 
-        if (this.position.getX() < game.getFieldSize().getX() * 0.05){
-            this.position.setX(game.getFieldSize().getX() * 0.05);
-        }else if (this.position.getX() > game.getFieldSize().getX() * 0.95){
-            this.position.setX(game.getFieldSize().getX() * 0.95);
+        if (this.position.getX() < game.getFieldSize().getX() * 0.02){
+            this.position.setX(game.getFieldSize().getX() * 0.02);
+        }else if (this.position.getX() > game.getFieldSize().getX() * 0.98){
+            this.position.setX(game.getFieldSize().getX() * 0.98);
         }
-        if (this.position.getY() < game.getFieldSize().getY() * 0.05){
-            this.position.setY(game.getFieldSize().getY() * 0.05);
-        }else if (this.position.getY() > game.getFieldSize().getY() * 0.95){
+        if (this.position.getY() < 0 - 10){
+            this.position.setY(0 - 10);
+        }else if (this.position.getY() > game.getFieldSize().getY() * 0.97){
             this.position.setY(game.getFieldSize().getY() * 0.95);
         }
 
-        this.rotate(enemyVel);
+        this.rotate();
         this.$element.css({ top: this.position.getY(), left: this.position.getX()});
     }
 
-    rotate(enemyVel){
-        this.currentRotation = enemyVel.angel(new Vector2(1,0)) + 180;
-        if (enemyVel.getX() >= 0){
-            this.currentRotation *= -1;
+    rotate(){
+        let tmp = new Vector2(this.position.getX() - game.getPlayer().getPos().getX() , this.position.getY() - game.getPlayer().getPos().getY());
+        this.angel = tmp.angel(new Vector2(0,1));
+        if (this.position.getX() >  game.getPlayer().getPos().getX()){
+            this.angel *= -1;
         }
-        this.$sprite.css({transform: 'rotate(' + this.currentRotation + 'deg'});
+
+        this.$sprite.css({transform: 'rotate(' + this.angel + 'deg'});
     }
 
     setVisiblity(visible){
